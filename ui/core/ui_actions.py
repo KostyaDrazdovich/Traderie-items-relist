@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
-import codecs
-
-import six
 from selenium.common.exceptions import (NoSuchElementException, StaleElementReferenceException, TimeoutException,
                                         WebDriverException)
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 from waiting import wait
@@ -16,7 +12,7 @@ UI_TIMEOUT = 10
 
 
 def update_locator_type(locator):
-    if isinstance(locator, six.string_types):
+    if isinstance(locator, str):
         return By.CSS_SELECTOR, '{}'.format(locator)
     else:
         return locator
@@ -66,7 +62,7 @@ class UiActions(object):
     @staticmethod
     def find_and_fill(locator, text, timeout_seconds=UI_TIMEOUT):
         locator = update_locator_type(locator)
-        text = six.text_type(text)
+        text = str(text)
 
         def locate_fill():
             driver_wait = WebDriverWait(Browser.webdriver, 1)
