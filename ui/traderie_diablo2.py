@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 
 class TraderiePage(object):
 
+    main_url = 'https://traderie.com'
     login_url = 'https://traderie.com/login'
 
     @staticmethod
@@ -23,5 +24,6 @@ class TraderiePage(object):
     submit_login_button_locator = (By.XPATH, "//div[@class='login-btn-bar']//button[@type='submit']")
     diablo2_game_selection = (By.CSS_SELECTOR, "a[href='/diablo2resurrected']")
     traderie_main_button = (By.CSS_SELECTOR, "a[class*='nav-desktop']")
+    save_consent_button = (By.XPATH, "//p[contains(text(),'Consent')]")
 
     close_pop_up_locator = (By.XPATH, '//div[@id="close-modal"]')
