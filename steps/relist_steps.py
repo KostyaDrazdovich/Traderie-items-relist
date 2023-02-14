@@ -15,6 +15,8 @@ class RelistSteps(object):
 
     @step
     def open_traderie_login_page(self):
+        self.traderie_page.open_page(url=self.traderie_page.main_url)
+        self.accept_consents()
         self.traderie_page.open_page(url=self.traderie_page.login_url)
 
     @step
@@ -22,6 +24,10 @@ class RelistSteps(object):
         self.ui_actions.find_and_fill(self.traderie_page.login_field_locator, login)
         self.ui_actions.find_and_fill(self.traderie_page.password_field_locator, password)
         self.ui_actions.find_and_click(self.traderie_page.submit_login_button_locator)
+
+    @step
+    def accept_consents(self):
+        self.ui_actions.find_and_click(self.traderie_page.save_consent_button)
 
     @step
     def open_diablo_game_section(self):
@@ -47,5 +53,3 @@ class RelistSteps(object):
         for _ in range(items_to_relist):
             self.ui_actions.find_and_click(self.traderie_page.relist_button)
             time.sleep(0.8)
-        # self.ui_actions.wait_for_element_missing_in_dom(self.traderie_page.relist_button)
-
