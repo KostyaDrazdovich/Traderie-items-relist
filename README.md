@@ -4,5 +4,5 @@ Current configuration is aimed to Diablo 2 (https://traderie.com/diablo2resurrec
 Using the project:
 
 1. Ensure that you have Python 3 and Chrome browser installed.
-2. Enter your account login/password credentials in the login and password fields in the file traderie_relist_items/steps/relist_steps.py.
-3. Run the file traderie_relist_items/steps/test_update_items.py.
+2. In the file traderie_relist_items/steps/relist_steps.py, fill in your account login and password credentials in the login and password variables.
+3. Run the test in file traderie_relist_items/steps/test_update_items.py.
