@@ -1,6 +1,6 @@
 from selenium.common.exceptions import WebDriverException
 
-from ui.core.webdriver_provider import init_driver
+from ui.core.webdriver_provider import DriverFactory
 
 
 class Browser(object):
@@ -10,7 +10,7 @@ class Browser(object):
     @staticmethod
     def get_webdriver():
         if not Browser.webdriver:
-            Browser.webdriver = init_driver()
+            Browser.webdriver = DriverFactory.init_driver()
         return Browser.webdriver
 
     def get(self, *args, **kwargs):
@@ -33,18 +33,6 @@ class Browser(object):
     @staticmethod
     def is_webdriver_inited():
         return getattr(Browser, 'webdriver', None) is not None
-
-    def get_cookies(self):
-        cookies = {}
-        for cookie in self.webdriver.get_cookies():
-            cookies[cookie['name']] = {'value': cookie.get('value'),
-                                       'expiry': cookie.get('expiry'),
-                                       'sameSite': cookie.get('sameSite')}
-        return cookies
-
-    def get_raw_cookies(self):
-        """Return browser cookies as is."""
-        return self.webdriver.get_cookies()
 
     @staticmethod
     def quit_browser():
